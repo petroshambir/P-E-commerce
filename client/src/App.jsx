@@ -12,11 +12,18 @@ import Placeorder from './pages/Placeorder'
 import Product from './pages/Product'
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import SearchBar from './components/SearchBar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import VerifyStripe from './pages/VerifyStripe';
+
 function App() {
   return (
     <>
       <div className='px-4 sm:px-[5vw] lg:px-[9vw]'>
+        <ToastContainer />
 <Navbar/>
+<SearchBar/>
         <Routes>
           <Route path='/' element={<Home />} />
           < Route path='/About' element={<About />} />
@@ -26,7 +33,8 @@ function App() {
           <Route path='/Login' element={<Loggin />} />
           <Route path='/Orders' element={<Orders />} />
           <Route path='/Placeorder' element={<Placeorder />} />
-          <Route path='/:Product/ProductId' element={<Product />} />
+          <Route path='/Product/:ProductId' element={<Product />} />
+          <Route path='/verify' element={<VerifyStripe/>} />
         </Routes>
         <Footer/>
         

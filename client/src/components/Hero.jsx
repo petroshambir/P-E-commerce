@@ -3,9 +3,9 @@ import {asset} from '../assets/asset'
 
 function Hero() {
   return (
-    <div className='flex flex-col sm:flex-row border border-gray-400'>
+    <div className='w-fit m-auto'>
   {/* hero left side */}
-  <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
+  {/* <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
   <div className='tex-[#414141]'>
 
     <div className='flex items-center gap-2'>
@@ -20,11 +20,11 @@ function Hero() {
 </div>
   </div>
 
-  </div>
+  </div> */}
 
   {/* Hero right side */}
 
-  <img src={asset.hero} alt="" className='w-full sm:w-1/2 max-h-96'/>
+  <img src={asset.banner} alt="" className='w'/>
     </div>
   )
 }
