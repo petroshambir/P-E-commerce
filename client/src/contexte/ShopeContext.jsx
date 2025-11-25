@@ -90,6 +90,7 @@ return totalAmount;
 
 const getProductData = async ()=>{
     try {
+        console.log('Loading mock products data');
         // const respons =await axios.get(backendUrl + '/api/product/list')
         const respons = await axios.get('/api/product/list')
        if (respons.data.success) {
