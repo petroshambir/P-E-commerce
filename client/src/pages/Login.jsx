@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 function Loggin() {
 
   const [currentState, setCurrentState] = useState('Login');
-  const { navigate,backendUrl, setToken, token } = useContext(ShopeContext);
+  const { navigate, setToken, token } = useContext(ShopeContext);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,7 +16,7 @@ function Loggin() {
     e.preventDefault();
     try {
       if (currentState === 'Sign Up') {
-        const respons = await axios.post(`${backendUrl}/api/user/register`,{ name, email, password })
+        const respons = await axios.post(`/api/user/register`,{ name, email, password })
         
         
 
@@ -28,7 +28,7 @@ function Loggin() {
           toast.error(respons.data.message)
         }
       } else {
-        const respons = await axios.post(`${backendUrl}/api/user/login`,{email, password})
+        const respons = await axios.post(`/api/user/login`,{email, password})
         if (respons.data.success) {
           setToken(respons.data.token)
           localStorage.setItem('token',respons.data.token)
@@ -68,7 +68,7 @@ if (token) {
           currentState === "Login" ? <p onClick={() => setCurrentState('Sign Up')} className='cursor-pointer'>Creat account</p> : <p onClick={() => setCurrentState('Login')} className='cursor-pointer'>Login Here</p>
         }
       </div>
-      <button className='bg-black text-white font-light px-8 py-2 mt-4'>{currentState === 'Login' ? 'sing In' : 'Sign Up'}</button>
+      <button className='bg-black text-white font-light px-8 py-2 mt-4'>{currentState === 'Login' ? 'Sign In' : 'Sign Up'}</button>
     </form>
   )
 }

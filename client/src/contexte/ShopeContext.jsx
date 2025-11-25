@@ -12,7 +12,7 @@ const ShopContextProvider = (props)=>{
     const currency = '$';
     const delivery_fee =10;
     // const backendUrl = import.meta.env.VITE_BACKEND_URL;
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+    // const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
     const[search,setSearch]=useState('');
     const[showSearch,setShowSearch]=useState(false);
     const [cartItem,setCartItem]= useState({});
@@ -40,8 +40,8 @@ if (cartData[itemId]) {
 setCartItem(cartData)
 if (token) {
     try {
-        // await axios.post(backendUrl + '/api/cart/add',{itemId,size},{headers:{token}})
-        axios.get('/api/product/list')
+        //  await axios.post(backendUrl + '/api/cart/add',{itemId,size},{headers:{token}})
+        await axios.post('/api/cart/add', { itemId, size }, { headers: { token } })
 
     } catch (error) {
         console.log(error)
@@ -90,7 +90,8 @@ return totalAmount;
 
 const getProductData = async ()=>{
     try {
-        const respons =await axios.get(backendUrl + '/api/product/list')
+        // const respons =await axios.get(backendUrl + '/api/product/list')
+        const respons = await axios.get('/api/product/list')
        if (respons.data.success) {
         const fixedProduct = respons.data.products.map(product =>({
             ...product,image:typeof product.image === 'string' ? product.image.split(','): product.image
@@ -107,8 +108,8 @@ const getProductData = async ()=>{
 }
 const getUserCart = async (token) =>{
 try {
-    const respons = await axios.post(backendUrl + '/api/cart/get',{},{headers:{token}})
-
+    // const respons = await axios.post(backendUrl + '/api/cart/get',{},{headers:{token}})
+    const respons = await axios.post('/api/cart/get', {}, { headers: { token } })
     if (respons.data.success) {
         const fixedCartData = {...respons.data.cartData};
         setCartItem(fixedCartData)
@@ -134,8 +135,7 @@ const value ={
     search,setSearch,showSearch,setShowSearch,
     cartItem,addCart,setCartItem,
     getCartCount,updateQuantity,
-    getCartAmount,navigate,
-    backendUrl,setToken,token
+    getCartAmount,navigate,setToken,token
 }
 return (
     <ShopeContext.Provider value={value}>

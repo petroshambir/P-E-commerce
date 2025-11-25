@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function Orders() {
 
-  const {backendUrl,token,currency}=useContext(ShopeContext);
+  const {token,currency}=useContext(ShopeContext);
 const[orderData,setOrdertData]= useState([]);
 
 const loadOrderData = async ()=>{
@@ -13,7 +13,7 @@ try {
   if (!token) {
     return null
   }
-  const response = await axios.post(backendUrl + '/api/orders/userorders',{},{headers:{token}})
+  const response = await axios.post( '/api/orders/userorders',{},{headers:{token}})
   if (response.data.success) {
     let allOrdersItem =[]
     response.data.orders.map((order)=>{

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopeContext } from '../contexte/ShopeContext';
-import { asset, products } from '../assets/asset';
+import { asset} from '../assets/asset';
 import RelatedProduct from '../components/RelatedProduct';
 
 function Product() {
@@ -46,7 +46,7 @@ useEffect(()=>{
       <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full'>
     {
               productData.image ?.map((item,index)=>(
-                <img src={item} key={index} alt="" className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer ' onError={(e) => { e.target.src = 'path/to/placeholder-image.png'; }} onClick={()=>setImage(item)}/>
+                <img src={item} key={index} alt="" className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer ' onError={(e) => { e.target.src = 'https://via.placeholder.com/300'; }} onClick={()=>setImage(item)}/>
       ))
     }
 
