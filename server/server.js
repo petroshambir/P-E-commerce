@@ -14,9 +14,20 @@ const app= express();
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
-app.use(cors({credentials:true}))
+// app.use(cors({credentials:true}))
 app.use(cookieParser());
-
+app.use(
+  cors({
+    origin: [
+      "https://p-e-commerce-1-frontend-clent.onrender.com", // Your frontend domain
+      "http://localhost:5173", // Vite dev server
+      "http://localhost:3000", // Create React App dev server
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "token"],
+  })
+);
 
 mongoDB();
 connectCloudinary();
