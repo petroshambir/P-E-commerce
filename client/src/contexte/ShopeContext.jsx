@@ -11,8 +11,10 @@ const ShopContextProvider = (props)=>{
 
     const currency = '$';
     const delivery_fee =10;
-    const backendUrl = "https://p-e-commerce-1-server.onrender.com";
-    // const backendUrl = import.meta.env.VITE_BACKEND_URL || "mongodb+srv://petroshambirr_db_user:pter123321@cluster0.t7qy9eq.mongodb.net/ecommerce";
+  
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  
+ 
     const[search,setSearch]=useState('');
     const[showSearch,setShowSearch]=useState(false);
     const [cartItem,setCartItem]= useState({});
@@ -51,7 +53,7 @@ if (token) {
 
 };
 
-const getCartCount = ()=>{
+const getCartCount =  ()=>{
     let totalCount = 0;
     for(const items in cartItem){
         for(const item in cartItem[items]){
@@ -91,11 +93,11 @@ return totalAmount;
 const getProductData = async ()=>{
     try {
         console.log('Loading mock products data');
-         const respons =await axios.get(backendUrl + '/api/product/list')
+         const respons = await axios.get(backendUrl + '/api/product/list')
         // const respons = await axios.get('/api/product/list')
        if (respons.data.success) {
         const fixedProduct = respons.data.products.map(product =>({
-            ...product,image:typeof product.image === 'string' ? product.image.split(','): product.image
+            ...product, image:typeof product.image === 'string' ? product.image.split(','): product.image
         }));
         // setProducts(respons.data.products)
         setProducts(fixedProduct)

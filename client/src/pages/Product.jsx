@@ -8,7 +8,7 @@ function Product() {
 
   const { ProductId }=useParams();
 
-  const { products, currency, addCart, backendUr } = useContext(ShopeContext); 
+  const { products, currency, addCart, backendUrl } = useContext(ShopeContext); 
 
 const[productData,setProductData]=useState(false);
 const [image,setImage]=useState('');
@@ -42,7 +42,7 @@ const fetchProductData = async ()=>{
 }
 useEffect(()=>{
   fetchProductData()
-}, [ProductId,products])
+}, [ProductId, products, fetchProductData])
 
   // useEffect(() => {
   //   console.log('Product Images:', productData.image);
@@ -80,7 +80,7 @@ useEffect(()=>{
               <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
               <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
               <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
-              <img src={asset.starr} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} /> 
+              <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} /> 
      <p className='pl-2'>(123)</p>
       </div>
 
