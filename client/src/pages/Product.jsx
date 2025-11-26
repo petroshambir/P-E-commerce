@@ -8,7 +8,7 @@ function Product() {
 
   const { ProductId }=useParams();
 
-  const { products, currency,addCart} = useContext(ShopeContext); 
+  const { products, currency, addCart, backendUr } = useContext(ShopeContext); 
 
 const[productData,setProductData]=useState(false);
 const [image,setImage]=useState('');

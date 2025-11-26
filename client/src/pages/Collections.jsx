@@ -5,7 +5,7 @@ import Titel from '../components/Title';
 import ProductsItem from '../components/ProductsItem';
 
 function Collections() {
-  const {products,search,showSearch}=useContext(ShopeContext);
+  const { products, search, showSearch, backendUr }=useContext(ShopeContext);
   const [ShowFilter,setShowFilter]=useState(false)
   const [filterProducts,setFilterProducts]=useState([]);
   const [category,setCategory]=useState([]);
@@ -67,7 +67,7 @@ const sortProduct = ()=>{
 
 useEffect(()=>{
 applyFilter();
-}, [category, subCategory,search,showSearch,products])
+}, [category, subCategory,search,showSearch,products,backendUr])
 
 useEffect(()=>{
 sortProduct()

@@ -6,7 +6,8 @@ import razorPay from 'razorpay'
 const currency = 'USD';
 const deliveryCharge = 10;
 
-const stripe = new Stripe(process.env.STRIP_SECRET_KEY)
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 const razorPayInstance = new razorPay({
   key_id:process.env.RAZORPAY_KEY_ID,  
@@ -148,7 +149,7 @@ try {
     const option = {
         amount:amount * 100,
         currency:currency.toUpperCase(),
-        // receipt:newOrder._id.tostring(),
+         receipt:newOrder._id.tostring(),
         receipt:newOrder._id.toString(), 
     }
 

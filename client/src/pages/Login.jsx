@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 function Loggin() {
 
   const [currentState, setCurrentState] = useState('Login');
-  const { navigate, setToken, token } = useContext(ShopeContext);
+  const { navigate, setToken, token, backendUrl } = useContext(ShopeContext);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,7 +16,7 @@ function Loggin() {
     e.preventDefault();
     try {
       if (currentState === 'Sign Up') {
-        const respons = await axios.post(`/api/user/register`,{ name, email, password })
+        const respons = await axios.post(backendUrl + `/api/user/register`,{ name, email, password })
         
         
 
@@ -28,7 +28,7 @@ function Loggin() {
           toast.error(respons.data.message)
         }
       } else {
-        const respons = await axios.post(`/api/user/login`,{email, password})
+        const respons = await axios.post(backendUrl + `/api/user/login`,{email, password})
         if (respons.data.success) {
           setToken(respons.data.token)
           localStorage.setItem('token',respons.data.token)
@@ -39,7 +39,12 @@ console.log(respons.data)
       }
     } catch (error) {
 console.log(error)
-toast.error.message
+// toast.error.message
+      toast.error(
+        error.response?.data?.message ||
+        error.message ||
+        'Something went wrong. Please try again.'
+      );
     }
   }
 
