@@ -11,8 +11,8 @@ const ShopContextProvider = (props)=>{
 
     const currency = '$';
     const delivery_fee =10;
-    //  const backendUrl =" https://p-e-commerce.onrender.com";
-     const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+    const backendUrl = "https://p-e-commerce-1-server.onrender.com";
+    // const backendUrl = import.meta.env.VITE_BACKEND_URL || "mongodb+srv://petroshambirr_db_user:pter123321@cluster0.t7qy9eq.mongodb.net/ecommerce";
     const[search,setSearch]=useState('');
     const[showSearch,setShowSearch]=useState(false);
     const [cartItem,setCartItem]= useState({});
