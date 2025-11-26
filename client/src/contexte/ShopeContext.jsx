@@ -11,8 +11,8 @@ const ShopContextProvider = (props)=>{
 
     const currency = '$';
     const delivery_fee =10;
-     const backendUrl =" https://p-e-commerce.onrender.com";
-    //  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+    //  const backendUrl =" https://p-e-commerce.onrender.com";
+     const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
     const[search,setSearch]=useState('');
     const[showSearch,setShowSearch]=useState(false);
     const [cartItem,setCartItem]= useState({});
