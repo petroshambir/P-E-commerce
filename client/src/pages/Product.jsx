@@ -17,8 +17,21 @@ const [size,setSize]=useState('')
 const fetchProductData = async ()=>{
   products.map((item)=>{
     if (item._id === ProductId) {
+      // const fixedItem = {
+      //   ...item,image:Array.isArray(item.image) ? item.image : item.image.split(',')
+      // };
+      let imageArray = [];
+      if (Array.isArray(item.image)) {
+        imageArray = item.image;
+      } else if (typeof item.image === 'string') {
+        imageArray = item.image.split(',').map(img => img.trim());
+      }
+      if (imageArray.length === 0) {
+        imageArray = ['https://via.placeholder.com/500'];
+      }
       const fixedItem = {
-        ...item,image:Array.isArray(item.image) ? item.image : item.image.split(',')
+        ...item,
+        image: imageArray
       };
   setProductData(fixedItem)
   
@@ -37,7 +50,9 @@ useEffect(()=>{
   // }, [productData, image]);
 
   return productData ?(
+    
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
+      
       {/* product Data */}
 <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
 
@@ -53,7 +68,7 @@ useEffect(()=>{
           
       </div> 
           <div className='w-full sm:w-[45%] '>
-            <img src={image} alt="" className='w-full h-auto' />
+            <img src={image} alt="" className='w-full h-auto' onError={(e) => { e.target.src = 'https://via.placeholder.com/500'; }} />
           </div>
 
       {/* product info */}
@@ -61,11 +76,11 @@ useEffect(()=>{
       <div className='flex-1'>
       <h1 className='font-medium text-2xl mt-2'>{productData.name}</h1>
       <div className='flex items-center gap-1 mt-2'>
-   <img src={asset.star} alt="" className="w-10" />
-   <img src={asset.star} alt="" className="w-10" />
-   <img src={asset.star} alt="" className="w-10" />
-   <img src={asset.star} alt="" className="w-10" />
-     <img src={asset.starr} alt="" className="w-10" /> 
+              <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
+              <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
+              <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
+              <img src={asset.star} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} />
+              <img src={asset.starr} alt="" className="w-10" onError={(e) => { e.target.src = 'https://via.placeholder.com/40'; }} /> 
      <p className='pl-2'>(123)</p>
       </div>
 
