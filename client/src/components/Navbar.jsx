@@ -14,7 +14,7 @@ function Navbar() {
     }
     return (
         <div className='flex items-center justify-between p-5 font-medium'>
-            <img src={asset.logoBella} alt="" className='w-32' />
+            <Link to='/'><img src={asset.logoBella} alt="" className='w-32' /></Link> 
 
             <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
 

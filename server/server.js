@@ -13,9 +13,18 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
-app.use(cors({ credentials: true }));
+// app.use(cors({ credentials: true }));
 app.use(cookieParser());
-
+app.use(
+  cors({
+    origin: [
+      "https://p-e-commerce-5-frontend.onrender.com", // your frontend
+      "http://localhost:5173", // for testing
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 mongoDB();
 connectCloudinary();
 

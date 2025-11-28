@@ -42,7 +42,7 @@ const fetchProductData = async ()=>{
 }
 useEffect(()=>{
   fetchProductData()
-}, [ProductId, products, fetchProductData])
+}, [ProductId, products])
 
   // useEffect(() => {
   //   console.log('Product Images:', productData.image);

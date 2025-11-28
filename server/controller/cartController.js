@@ -23,8 +23,8 @@ try {
         }
         
     }else{
-        cartData[itemId]={}
-        cartData[size]=1
+       cartData[itemId] = {};
+       cartData[itemId][size] = 1; 
     }
 
     await userModel.findByIdAndUpdate(userId,{cartData})
