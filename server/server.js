@@ -13,13 +13,14 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
-// app.use(cors({ credentials: true }));
+//  app.use(cors({ credentials: true }));
 app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "https://p-e-commerce-5-frontend.onrender.com", // your frontend
-      "http://localhost:5173",
+      "https://p-e-commerce-5.onrender.com",
+      "https://p-e-commerce-5-frontend.onrender.com",
+      "https: //p-e-commerce-5-adminn.onrender.com",
       "http://localhost:5173", // for testing
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -39,5 +40,5 @@ app.listen(PORT,'0.0.0.0', () => {
 });
 
 app.get("/", (req, res) => {
-  return res.send("backend is working ");
+  return res.send("backend is working sograt");
 });
