@@ -11,8 +11,9 @@ const ShopContextProvider = (props)=>{
 
     const currency = '$';
     const delivery_fee =10;
-  
-    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://p-e-commerce-4.onrender.com";
+    const backendUrl =import.meta.env.VITE_BACKEND_URL || "https://p-e-commerce-5.onrender.com"
+    // const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://p-e-commerce-5.onrender.com";
+    // "https://p-e-commerce-4.onrender.com";
   
  
     const[search,setSearch]=useState('');

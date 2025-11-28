@@ -18,10 +18,10 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "https://p-e-commerce-5.onrender.com",
-      "https://p-e-commerce-5-frontend.onrender.com",
-      "https: //p-e-commerce-5-adminn.onrender.com",
-      "http://localhost:5173", // for testing
+      "https://p-e-commerce-5-frontend.onrender.com", // main frontend
+      "https://p-e-commerce-5-admin.onrender.com", // admin frontend (fixed)
+      "http://localhost:5173", // local dev
+      "http://localhost:5174", // local dev alternate
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,

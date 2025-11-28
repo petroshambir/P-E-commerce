@@ -10,7 +10,9 @@ const [ password,setPassword]=useState('');
     const onSubmitHandler = async (e) =>{
         try {
             e.preventDefault();
-          const response =await axios.post(backendURL + '/api/user/admin',{email,password});
+            const response = await axios.post(backendURL + '/api/user/admin', { email, password }, {
+                withCredentials: true 
+            });
           if (response.data.success) {
             setToken(response.data.token)
           }else{
