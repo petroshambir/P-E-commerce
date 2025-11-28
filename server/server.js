@@ -19,6 +19,7 @@ app.use(
   cors({
     origin: [
       "https://p-e-commerce-5-frontend.onrender.com", // your frontend
+      "http://localhost:5173",
       "http://localhost:5173", // for testing
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
